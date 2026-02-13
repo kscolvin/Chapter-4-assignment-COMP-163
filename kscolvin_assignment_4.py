@@ -64,6 +64,55 @@ print("Your current stress level is:", stress_level)
 
 
 # ========================================
+# ========================================
 
+# Part 3 : Study Strategy Decision
+# The player will choose a study strategy that affects their GPA and stress levels.
+
+study_options = ["Group Study", "Solo Study", "Tutoring", "Not Study"]
+print("Study Strategy Decision: Group Study / Solo Study / Tutoring / Not Study")
+study_strategy = input("Choose your study strategy!: ")
+
+# The following code will determine the effects of the chosen study strategy on GPA and stress levels.
+if study_strategy not in study_options:
+    print("Invalid choice. Please choose 'Group Study', 'Solo Study', 'Tutoring', or 'Not Study'.")
+
+else: 
+    if study_strategy == "Group Study" and stress_level > 30 and social_points >= 10:
+        current_gpa = current_gpa + 0.2
+        stress_level = stress_level + 10
+        study_hours = study_hours + 5
+        social_points = social_points - 10
+        print("You chose Group Study. Your GPA increases and your stress level increases because your socially anxious!") # Group study is productive. Improves stats but as an introvert, adds stress lol!
+    elif study_strategy == "Solo Study" and stress_level >= 50:
+        current_gpa = current_gpa + 0.1
+        stress_level = stress_level + 5
+        study_hours = study_hours + 5
+        social_points = social_points +5 
+        print("You chose Solo Study. Your GPA increases slightly but your stress level increases due to isolation.") # Solo study is productive but can be isolating, you don't always trust yourself to teach, which adds stress.
+    elif study_strategy == "Tutoring" and (current_gpa < 3.0 or stress_level > 60):
+        current_gpa = current_gpa + 0.3
+        stress_level = stress_level - 15
+        study_hours = study_hours + 3
+        social_points = social_points - 5
+        print("You chose Tutoring. Your GPA increases significantly and your stress level decreases. You had a good tutor!") # Tutoring is very productive, it improves GPA significantly and reduces stress because you have someone to help you.
+    elif study_strategy == "Not Study":
+        current_gpa = current_gpa - 1.0
+        stress_level = stress_level + 20
+        study_hours = study_hours + 0
+        social_points = social_points + 0
+        print("You chose Not Study. Your GPA decreases and your stress level increases.") # Not studying is detrimental, it decreases GPA and increases stress level significantly because you're not preparing for the exam.
+    else:
+        print("This study strategy had no effect.")
+
+# Show stats !
+print()
+print("Your current GPA is:", current_gpa)
+print("Your current stress level is:", stress_level)
+print("Your current social points are:", social_points)
+print("Your current study hours are:", study_hours)
+
+
+# ========================================
 
 
