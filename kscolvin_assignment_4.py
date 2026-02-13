@@ -31,7 +31,39 @@ print("Your stress level is:", stress_level)
 
 
 # ========================================
+# ========================================
 
+# Part 2 : Course Planning Decision
+# The player will be presented with choices to manage their time and stress levels. The choices will affect study hours and stress levels.
+
+print("Course Load Decision: Light / Standard / Heavy")
+course_load = input("Choose your workload!: ") 
+
+if course_load == "Light":
+    study_hours = study_hours + 5
+    stress_level = stress_level + 10
+    print("You chose a light course load. You don't study as much and have less stress!") # Choosing a light load improves study time and increases stress level slightly because you might feel like you're not doing enough.
+elif course_load == "Standard":
+    study_hours = study_hours + 10
+    stress_level = stress_level + 20
+    print("You chose a standard course load. Your study hours and stress level increase. It's getting serious!") # Choosing a standard load improves study time and increases stress level moderately.
+elif course_load == "Heavy":
+    study_hours = study_hours + 20
+    stress_level = stress_level + 30
+    print("You chose a heavy course load. You have to study longer and your stress increases!") # Choosing a heavy load improves study time significantly but also increases stress level significantly because it's a lot of work.
+elif course_load != "Light" and course_load != "Standard" and course_load != "Heavy":
+    print("Invalid choice. Please choose 'Light', 'Standard', or 'Heavy'.")
+else:
+    print("Invalid GPA. Please choose 'Light', 'Standard', or 'Heavy'.")
+
+# Show Stats !
+print()
+print("Your current GPA is:", current_gpa)
+print("Your current study hours are:", study_hours)
+print("Your current stress level is:", stress_level)
+
+
+# ========================================
 
 
 
