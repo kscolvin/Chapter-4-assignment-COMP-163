@@ -1,0 +1,60 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test 1 - Foundation Setup
+      id: test-1-foundation-setup
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test 1 - Foundation Setup
+        setup-command: ''
+        command: python test_assignment.py --test 1
+        timeout: 1
+        max-score: 15
+    - name: Test 2 - Course Planning Decision
+      id: test-2-course-planning-decision
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test 2 - Course Planning Decision
+        setup-command: ''
+        command: python test_assignment.py --test 2
+        timeout: 1
+        max-score: 20
+    - name: Test 3 - Study Strategy Decision
+      id: test-3-study-strategy-decision
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test 3 - Study Strategy Decision
+        setup-command: ''
+        command: python test_assignment.py --test 3
+        timeout: 1
+        max-score: 15
+    - name: Test 4 - Final Semester Assessment
+      id: test-4-final-semester-assessment
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test 4 - Final Semester Assessment
+        setup-command: ''
+        command: python test_assignment.py --test 4
+        timeout: 1
+        max-score: 20
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-1-FOUNDATION-SETUP_RESULTS: "${{steps.test-1-foundation-setup.outputs.result}}"
+        TEST-2-COURSE-PLANNING-DECISION_RESULTS: "${{steps.test-2-course-planning-decision.outputs.result}}"
+        TEST-3-STUDY-STRATEGY-DECISION_RESULTS: "${{steps.test-3-study-strategy-decision.outputs.result}}"
+        TEST-4-FINAL-SEMESTER-ASSESSMENT_RESULTS: "${{steps.test-4-final-semester-assessment.outputs.result}}"
+      with:
+        runners: test-1-foundation-setup,test-2-course-planning-decision,test-3-study-strategy-decision,test-4-final-semester-assessment
