@@ -114,5 +114,32 @@ print("Your current study hours are:", study_hours)
 
 
 # ========================================
+# ========================================
 
+# Part 4 : Multiple Endings Setup
+print("\nBased on your final stats...")
+
+if type(current_gpa) is not float or type(stress_level) is not int or type(study_hours) is not int:
+    print("Error: Invalid data types for GPA, stress level, or study hours. Please check your inputs and try again.")
+
+# Determine Ending
+if current_gpa >= 3.5:
+    if stress_level <= 60 and study_hours >= 25:
+            print("Congratulations! You got the STUDIOUS ending! You've successfully completed the semester with a high GPA and low stress.") # Best ending because you pass the semester and you have low stress. No burnout!
+    else:
+            print("You got the SUCCESSFUL ending! You've completed the semester with a high GPA, but your stress levels were a bit high. Try to manage your stress better next time!") # You pass the semester but you're burnt out.
+elif current_gpa >= 3.0:
+    if stress_level < 50 and study_hours >= 20:
+            print("Congratulations! You got the BALANCED ending! You've completed the semester with a decent GPA and manageable stress levels. Keep up the good work!") # A good outcome. Very balanced all levels are normal but not extraordinary.
+    else:
+            print("You got the AVERAGE ending! You've completed the semester with an average GPA and stress levels. Try to improve next time!") # You pass the semester but your stress levels are high or your study hours are low, which is not ideal.
+elif current_gpa < 2.5: 
+    if stress_level >= 70:
+        print("Unfortunately, You got the WORST ending! Your GPA is too low to pass the semester and you're stressed out. Better luck next time!") # You failed the semester and you're very stressed out, which is the worst outcome.
+    else:
+        print("You got the STRUGGLING ending. Your GPA is low, but your stress levels are manageable. Try to improve your GPA next time!") # You failed the semester but at least you're not stressed out, which is better ig.
+else:
+    print("You got the FAILURE ending. Your GPA and stress levels are in a gray area. Try to improve both next time!") # You are in a gray area, you didn't fail but you didn't do well either.
+
+# ========================================
 
